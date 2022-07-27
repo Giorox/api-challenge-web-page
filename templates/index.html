@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container-fluid marketing">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="featurette-heading mb-5"><b><span class="text-emphasis">Desafio</span> da API!</b></h1>
+        <p class="lead">Você sempre lê esse termo "API" e fica se perguntando: "API? O que é isso?" e não consegue saná-la apesar de entender, em princípio, para que servem?</p>
+        <p class="lead mb-5">Que tal adicionar mais essa habilidade so seu arcabouço de uma maneira divertida e dinâmica?</p>
+        <a type="button" class="btn btn-lg btn-outline-palette-emphasis" href="{{ url_for('githubLogin') }}">Quero Participar!</a>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <a class="anchor" id="about"></a>
+      <div class="col-md-12">
+        <h2 class="featurette-heading">Como <span class="text-emphasis">funciona?</span></h2>
+        <p class="lead">O desafio das APIs é uma <span class="text-emphasis">competição amigável</span> que objetiva o desenvolvimento individual dos envolvidos nas áreas da computação relacionadas às chamadas APIs, sigla do inglês que significa <i>Application Programming Interface</i> e que representa uma maneira de dar acesso a funções programáticas pertencentes a uma determinada aplicação através de um protocolo de comunicação bem estabelecido como HTTP, RTC, STP e outros.</i></p>
+        <p class="lead">Queremos disponibilizar um ambiente onde os participantes serão motivados, de maneira <span class="text-emphasis"><i>gameificada</i></span> à entregarem cada vez mais funcionalidades e que, por sua vez, fomentarão a vontade e a necessidade de um estudo cada vez mais aprofundado sobre APIs.</p>
+        <p class="lead">O desafio funciona começando com o seu registro utilizando o Github, plataforma de hospedagem de repositórios Git que é considerado como um padrão de indústria e age como um <i>portfolio</i> e um <i>currículo</i> para todos que desejam trabalhar no mercado de tecnologia. Através desse registro o seu progresso será contabilizado na plataforma e, ao mesmo tempo, irá fazer com que você deixe o seu código disponível para outros interessados e para seu futuro empregador!</p>
+        <p class="lead">Seguido disso você recebe um conjunto de instruções de como estruturar seu projeto, quais dados você usará e quais <span class="text-emphasis">objetivos</span> lhe rendem pontos, podendo estes serem <b>obrigatórios</b>, aqueles que devem ser cumpridos para que você possa entregar seu projeto e este ser considerado no ranking, ou <b>adicionais</b>, aqueles que lhe renderam pontos adicionais se cumpridos com sucesso.</p>
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <a class="anchor" id="learnapi"></a>
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">Sobre <span class="text-emphasis">APIs.</span></h2>
+        <p class="lead">Uma API é um conjunto de rotinas estabelecido por um software para permitir o uso de suas funcionalidades por softwares, aplicativos e clientes externos que desejam usar seus serviços sem querer se importar com detalhes de implementação dessas.</p>
+        <p class="lead">No contexto de <span class="text-emphasis">desenvolvimento web</span> ela diz respeito à funções que agem baseado em mensagens e respostas (expressas em formatos estruturados como <span class="text-emphasis">XML e JSON</span>) através do protocolo de comunicação <span class="text-emphasis">HTTP</span> e que, após o advento da web 2.0, tem dado preferência para o padrão <span class="text-emphasis">REST</span>.</p>
+        <p class="lead">O padrão <span class="text-emphasis">REST</span> (de Representational State Transfer) é um padrão de comunicação que se baseia em: </p>
+        <p class="lead">
+          <ul>
+            <li>Ser <span class="text-emphasis">stateless</span>, isto é, não guardar ou depender de um controle de estados, as mensagens possuem toda a informação necessária para cumprir com a requisição;</li>
+            <li>Implementar um conjunto de operações bem definidos, chamados <span class="text-emphasis">verbos</span>, sendo estes: GET, POST, DELETE e PUT;</li>
+            <li>Uma identificação única dos recursos, os <span class="text-emphasis">URIs</span>; e</li>
+            <li>Uso de <span class="text-emphasis">hipermídia</span>, permitindo a navegação entre os recursos sem mais nenhum outro artifício além de chamadas REST</li>
+          </ul>
+        </p>
+        <p class="lead">Atraés da combinação destes conceitos, você irá abordar os desafios propostos para atingir os objetivos desejados e, assim, ater um conhecimento cada vez mais aprofundado sobre este conceito importantíssimo e de uma utilidade <span class="text-emphasis">inimaginável</span>!</p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        <img class="featurette-image img-fluid mx-auto" width="500" height="500" src="{{ url_for('static', filename='img/api.png') }}" role="img" aria-label="API flow"><title>How an API works</title></img>
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <a class="anchor" id="participants"></a>
+      <div class="col-md-12">
+        <h2 class="featurette-heading text-center mb-5"><span class="text-emphasis">Participantes</span> do desafio!</h2>
+        <div class="row">
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <p>John Doe</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <p>Jane Doe</p>
+          </div><!-- /.col-lg-4 -->
+          <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <p>Bill Doe</p>
+          </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container-fluid">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2022–2022 <b>Giroflex Consulting - <span class="text-emphasis">Giovanni Rebouças</span></b> &middot; <a href="https://www.linkedin.com/in/giovannireboucas/">LinkedIn</a> &middot; <a href="https://github.com/Giorox">Github</a></p>
+  </footer>
+</main>
+
+{% endblock %}

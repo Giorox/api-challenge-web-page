@@ -1,0 +1,117 @@
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+  color: #ffffff;
+  background-color: #242038;
+}
+
+.nav-link{
+  margin-left: .5rem !important;
+  margin-right: .5rem !important;
+  font-size: large;
+}
+
+.nav-link.active{
+  background-color: #F86624 !important;
+  color: #ffffff !important;
+  border-radius: 2px;
+}
+
+.nav-link:hover{
+  background-color: #F86624 !important;
+  color: #ffffff !important;
+  border-radius: 2px;
+}
+
+.bg-dark {
+  background-color: #242038 !important;
+}
+
+.bg-light {
+  background-color: #EDE7E3 !important;
+}
+
+a.anchor
+{
+  display: block;
+  position: relative;
+  top: -125px;
+  visibility: hidden;
+}
+
+.btn-outline-palette-primary{
+    color: #EDE7E3;
+    border-color: #EDE7E3;
+}
+
+.btn-outline-palette-primary:hover{
+  background-color: #006849;
+  color: #EDE7E3;
+  border-color: #006849;
+}
+
+.btn-outline-palette-emphasis{
+  color: #EDE7E3;
+  border-color: #EDE7E3;
+}
+
+.btn-outline-palette-emphasis:hover{
+background-color: #F86624;
+color: #EDE7E3;
+border-color: #F86624;
+}
+
+.text-emphasis{
+  color: #F86624;
+}
+
+/* MARKETING CONTENT
+-------------------------------------------------- */
+  
+/* Center align the text within the three columns below the carousel */
+.marketing .col-lg-4 {
+  margin-bottom: .5rem;
+  text-align: center;
+}
+
+.marketing h2 {
+  font-weight: 400;
+}
+
+.marketing {
+  margin-top: 3rem;
+}
+
+/* rtl:begin:ignore */
+.marketing .col-lg-4 p {
+  margin-right: .75rem;
+  margin-left: .75rem;
+}
+/* rtl:end:ignore */
+
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 2rem 0 4rem; /* Space out the Bootstrap <hr> more */
+}
+  
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 300;
+  line-height: 1;
+  /* rtl:remove */
+  letter-spacing: -.05rem;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+  .featurette-heading {
+    font-size: 50px;
+  }
+}
