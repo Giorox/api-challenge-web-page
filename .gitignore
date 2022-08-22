@@ -130,3 +130,9 @@ dmypy.json
 
 # VSCode workspace settings
 *.code-workspace
+
+# Local config files containing secrets
+config/config.py
+
+# VSCode Workspace Config
+.vscode/

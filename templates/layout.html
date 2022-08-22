@@ -61,6 +61,13 @@
                             <a id="participantsNav" class="nav-link" href="{{ url_for('home', _anchor='participants') }}" onclick="drawActive('participantsNav')">Participantes</a>
                         </li>
                     </ul>
+                    <span class="nav-item justify-content-right">
+                        {% if 'user' in session %}
+                            <img class="rounded-circle" width="70" height="70" aria-label="User Image: 70x70" src="{{ session['user']['user_details']['avatar_url'] }}" alt="User Image: 70x70"></img>
+                        {% else %}
+                            <a type="button" class="btn btn-lg btn-outline-palette-primary" href="{{ url_for('githubLogin') }}">Login</a>
+                        {% endif %}
+                    </span>
                 </div>
             </div>
         </nav>        
