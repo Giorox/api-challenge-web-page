@@ -136,3 +136,6 @@ config/config.py
 
 # VSCode Workspace Config
 .vscode/
+
+# Session data
+flask_session/
