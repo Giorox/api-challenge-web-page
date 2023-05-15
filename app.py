@@ -1,13 +1,13 @@
 # Built-in and Third-party modules
-import json
 from flask import Flask, redirect, render_template, request, session, url_for
 from flask_session import Session
 import requests as rq
 import secrets
 # Self authored modules
-from funcs import User, UserEncoder
+from funcs import User
 
 app = Flask(__name__)
+
 
 # -----------------------------------------------------------------------------------------------
 # ----------------------------------- MAIN APPLICATION ROUTES -----------------------------------
@@ -15,6 +15,7 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 # -----------------------------------------------------------------------------------------------
 # ------------------------------------ LOGIN AND USER ROUTES ------------------------------------
@@ -56,7 +57,7 @@ def getAuthCallback():
     if session["state"] != state:
         session.pop("state", None)
         return redirect(url_for("home"), code=302)  # Error or home, with HTTP 302 redirect code (maybe error?)
-    
+
     # Build JSON payload for token request, set destination url and configure all request headers
     secondPhaseURL = "https://github.com/login/oauth/access_token"
     payload = {
@@ -81,23 +82,56 @@ def getAuthCallback():
         raise rq.exceptions.HTTPError(tokenResponse)
 
     # Create a user object that will store all user data, initialize it with OAuth Access Token
-    session["user"] = json.dumps(User(tokenResponse["access_token"]), cls=UserEncoder)
+    session["user"] = User(tokenResponse["access_token"]).toDict()
 
-    # Speed, Surprise and Violence of Action
+    # return session["user"]
     return redirect(url_for("home"))
 
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html")
+@app.route("/profile/<string:username>")
+def profile(username):
+    if username == session["user"]["user_details"]["login"]:
+        profileData = session["user"]
+    else:
+        ...  # Call function to pull user profile
+
+    return render_template("profile.html", profile=profileData)
+
+
+@app.route("/score/<string:username>")
+def score(username):
+    ...
+
+
+@app.route("/scoreboard")
+def scoreboard():
+    ...
+
+
+@app.route("/logout")
+def logout():
+    # Explicitly pop user and state variables from current session
+    session.pop("user")
+    session.pop("state")
+
+    # Clear the rest of the session
+    session.clear()
+
+    # Redirect to home
+    return redirect(url_for("home"))
 
 
 # -----------------------------------------------------------------------------------------------
-# ------------------------------------ ERROR HANDLING ROUTES ------------------------------------
+# ----------------------------------------- ERROR PAGES -----------------------------------------
 # -----------------------------------------------------------------------------------------------
 @app.errorhandler(404)
-def pageNotFound(error):
-    ...
+def notFound(error):
+    return render_template('errors/404.html'), 404
+
+
+@app.errorhandler(500)
+def internalServer(error):
+    return render_template('errors/500.html'), 500
 
 
 if __name__ == "__main__":
