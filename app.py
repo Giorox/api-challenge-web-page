@@ -68,18 +68,35 @@ def getAuthCallback():
     headers = {"Accept": "application/json"}
 
     # Call POST with built parameters and catch response
-    tokenRequest = rq.post(secondPhaseURL, data=payload, headers=headers)
+    try:
+        tokenRequest = rq.post(secondPhaseURL, data=payload, headers=headers)
+        tokenRequest.raise_for_status()
+    except rq.exceptions.HTTPError as err:
+        print(f"HTTP ERROR: {err}")
+
+    # Once we've established there are no HTTP errors, get the JSON response and check if there are any problems
     tokenResponse = tokenRequest.json()
+
+    if 'error' in tokenResponse.keys():
+        raise rq.exceptions.HTTPError(tokenResponse)
 
     # Create a user object that will store all user data, initialize it with OAuth Access Token
     session["user"] = json.dumps(User(tokenResponse["access_token"]), cls=UserEncoder)
 
-    #return session["user"]
+    # Speed, Surprise and Violence of Action
     return redirect(url_for("home"))
 
 
 @app.route("/profile")
 def profile():
+    return render_template("profile.html")
+
+
+# -----------------------------------------------------------------------------------------------
+# ------------------------------------ ERROR HANDLING ROUTES ------------------------------------
+# -----------------------------------------------------------------------------------------------
+@app.errorhandler(404)
+def pageNotFound(error):
     ...
 
 

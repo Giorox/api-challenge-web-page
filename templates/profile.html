@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+
+  <!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+  <div class="container-fluid marketing">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="featurette-heading mb-5"><b>Bem-vindo <span class="text-emphasis">{{ session['user']['user_details']['avatar_url'] }}</span></b></h1>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+    <!-- START THE FEATURETTES -->
+
+
+    <!-- /END THE FEATURETTES -->
+
+  </div><!-- /.container -->
+
+
+  <!-- FOOTER -->
+  <footer class="container-fluid">
+    <p class="float-end"><a href="#">Back to top</a></p>
+    <p>&copy; 2022–2022 <b>Giroflex Consulting - <span class="text-emphasis">Giovanni Rebouças</span></b> &middot; <a href="https://www.linkedin.com/in/giovannireboucas/">LinkedIn</a> &middot; <a href="https://github.com/Giorox">Github</a></p>
+  </footer>
+</main>
+
+{% endblock %}
