@@ -40,7 +40,7 @@
         }
     </script>
     <body>
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <nav id="primary-navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url_for('home', _anchor='') }}"><img src="{{ url_for('static', filename='img/icosophage_banner.png') }}" height="64" width="128"></img></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,7 +49,7 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav me-auto mb-0 mb-md-0 mr-auto" id="navUL">
                         <li class="nav-item">
-                            <a id="homeNav" class="nav-link active" aria-current="page" href="{{ url_for('home', _anchor='') }}" onclick="drawActive('homeNav')">Home</a>
+                            <a id="homeNav" class="nav-link active" aria-current="page" href="{{ url_for('home', _anchor='home') }}" onclick="drawActive('homeNav')">Home</a>
                         </li>
                         <li class="nav-item">
                             <a id="aboutNav" class="nav-link" href="{{ url_for('home', _anchor='about') }}" onclick="drawActive('aboutNav')">Como funciona?</a>
@@ -69,15 +69,14 @@
                                 </a>
                                   <div class="dropdown-menu dropdown-menu-palette-emphasis" aria-labelledby="dropdownMenuButton">
                                     <h6 class="dropdown-header">Logado como {{ session.user.user_details.name }}</h6>
-                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('profile', username=session.user.user_details.login) }}">Perfil</a>
-                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('score', username=session.user.user_details.login) }}">Pontuação</a>
-                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('scoreboard') }}">Scoreboard</a>
+                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('user.profile', login=session.user.user_details.login) }}">Perfil</a>
+                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('user.scoreboard') }}">Scoreboard</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('logout') }}">Logout</a>
+                                    <a class="dropdown-item dropdown-item-pallete-emphasis" href="{{ url_for('user.logout') }}">Logout</a>
                                   </div>
                             </div>
                         {% else %}
-                            <a type="button" class="btn btn-lg btn-outline-palette-primary" href="{{ url_for('githubLogin') }}">Login</a>
+                            <a type="button" class="btn btn-lg btn-outline-palette-primary" href="{{ url_for('user.githubLogin') }}">Login</a>
                         {% endif %}
                     </span>
                 </div>
@@ -99,4 +98,26 @@
     <script src={{ url_for('static', filename='js/jquery-3.6.0.min.js') }}></script>
     <script src={{ url_for('static', filename='js/popper.min.js') }}></script>
     <script src={{ url_for('static', filename='js/bootstrap.bundle.min.js') }}></script>
+    <script>
+        function setActiveListElements(event){
+            // Get the offset of the window from the top of page
+            var windowPos = $(window).scrollTop();
+            
+            $('#primary-navbar li a').each(function() { 
+                var anchorId = $(this);
+                var target = $(anchorId.attr("href").replace("/", ""));
+
+                if (target.length > 0) {
+                    if (target.position().top - $('#primary-navbar').outerHeight() <= windowPos) {
+                        $('#primary-navbar li a').removeClass("active");
+                        anchorId.addClass("active");
+                    }
+                }
+            });
+        }
+
+        $(window).scroll(function() {
+            setActiveListElements();
+        });
+    </script>
 </html>
